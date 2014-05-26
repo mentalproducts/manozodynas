@@ -43,3 +43,24 @@ class User(AbstractBaseUser, PermissionsMixin):
     def get_short_name(self):
         "Returns the short name for the user."
         return self.first_name
+
+
+class WordWithoutTranslation(models.Model):
+    
+    def __unicode__(self):
+        return self.word 
+        return self.context
+
+
+
+    word = models.CharField(max_length=50)
+    context = models.TextField()
+
+
+
+class Translation(models.Model):
+
+    foreign_word = models.ForeignKey(WordWithoutTranslation)
+    translation = models.CharField(max_length=50)
+
+
